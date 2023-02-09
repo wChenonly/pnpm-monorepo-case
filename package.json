@@ -1,0 +1,57 @@
+{
+  "name": "pnpm-monorepo-case",
+  "version": "1.0.0",
+  "private": true,
+  "description": "This is the simplest pnpm monorepo case",
+  "author": "weifan",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "simple-git-hooks",
+    "prepare": "husky install"
+  },
+  "nano-staged": {
+    "*.{ts,tsx,js,jsx,vue}": "eslint --fix",
+    "*.{ts,tsx,js,jsx,vue,less,css,md}": "prettier --write"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "./node_modules/.bin/nano-staged"
+  },
+  "packageManager": "pnpm@7.11.0",
+  "keywords": [
+    "pnpm",
+    "monorepo",
+    "demo",
+    "case"
+  ],
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=7"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.35.2",
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "ali-oss": "^6.17.1",
+    "bumpp": "^8.2.1",
+    "esbuild": "^0.16.14",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "esno": "^0.16.3",
+    "fast-glob": "^3.2.12",
+    "husky": "^8.0.3",
+    "kleur": "^4.1.5",
+    "nano-staged": "^0.8.0",
+    "prettier": "^2.8.1",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.8.1",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4",
+    "vitepress": "1.0.0-alpha.35",
+    "vitest": "^0.28.4"
+  }
+}
