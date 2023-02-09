@@ -19,7 +19,7 @@ const move = (format: string): void => {
   writeFileSync(resolve(__dirnameNew, './dist/index.mjs'), readFileSync(input, 'utf-8'))
   removeSync(resolve(__dirnameNew, './dist/utils.d.ts'))
 
-  // eslint-disable-next-line no-console, @typescript-eslint/restrict-template-expressions
+  // eslint-disable-next-line no-console
   console.log(kleur.bold().green(`\n ${name} ${format} 格式 ${version} 版本打包成功 🎉🎉🎉\n`))
 }
 

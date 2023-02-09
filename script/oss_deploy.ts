@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable no-console */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import fs from 'fs'
 import path from 'path'
 import util from 'util'
@@ -17,7 +14,6 @@ const client = new OSS({
   bucket: 'xxx'
 })
 
-// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 const publicPath = `${process.env.INIT_CWD}/.vitepress/dist`
 
 async function run(proPath = '') {

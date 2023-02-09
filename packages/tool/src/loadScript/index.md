@@ -22,10 +22,10 @@ import { loadScript } from 'tool'
 ## 例子
 
 ```ts
+/* eslint-disable no-new */
 import { loadScript } from 'tool'
 
 loadScript('https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/vConsole/3.12.1/vconsole.min.js', 'vConsole').then(Res => {
-  const thing = new Res()
-  thing()
+  new Res()
 })
 ```
