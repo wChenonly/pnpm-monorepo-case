@@ -4,7 +4,7 @@ import fse from 'fs-extra'
 import fg from 'fast-glob'
 const { readFileSync, writeFileSync } = fse
 
-const basePath = process.env.basePath
+const basePath = process.env.BASE_PATH
 const pattern = `"${basePath}"`
 
 const htmlArr = fg.sync('./.vitepress/dist/**/*.html')

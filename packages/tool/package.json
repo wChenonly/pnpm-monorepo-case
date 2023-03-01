@@ -28,7 +28,7 @@
   "scripts": {
     "clean": "rimraf dist && rimraf .vitepress/dist",
     "docs:dev": "vitepress dev --host",
-    "docs:build": "rimraf .vitepress/dist && vitepress build --host --base=/share/ && basePath=/share/ esno ./modifyHtml.ts",
+    "docs:build": "rimraf .vitepress/dist && vitepress build --host --base=/share/ && BASE_PATH=/share/ esno ./modifyHtml.ts",
     "docs:serve": "pnpm run docs:build && vitepress serve --host --base=/share/",
     "build:bundle": "tsc -p ./tsconfig.json --emitDeclarationOnly && esno ./esbuild.ts",
     "build": "pnpm clean && pnpm build:bundle && pnpm docs:build",
