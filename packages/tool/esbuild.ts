@@ -11,8 +11,8 @@ const { writeFileSync, removeSync } = fse
 const inputArr = fg.sync('src/**/(index).ts')
 
 const move = (format: string): void => {
-  const __filenameNew = fileURLToPath(import.meta.url)
-  const __dirnameNew = dirname(__filenameNew)
+  const __filename = fileURLToPath(import.meta.url)
+  const __dirname = dirname(__filename)
 
   const catalogue = fg.sync('src/**', { onlyDirectories: true })
 
@@ -20,14 +20,18 @@ const move = (format: string): void => {
 `
   const cjsTemplate = (name: string) => `export * from './${name}/index.js'
 `
+  const dtsTemplate = (name: string) => `export * from './${name}'
+`
 
   const mjs = catalogue.map(e => mjsTemplate(e))
   const cjs = catalogue.map(e => cjsTemplate(e))
+  const dts = catalogue.map(e => dtsTemplate(e))
 
-  writeFileSync(resolve(__dirnameNew, './dist/index.js'), `${cjs.toString().replace(/\/src|,/g, '')}`)
-  writeFileSync(resolve(__dirnameNew, './dist/index.mjs'), `${mjs.toString().replace(/\/src|,/g, '')}`)
+  writeFileSync(resolve(__dirname, './dist/index.js'), `${cjs.toString().replace(/\/src|,/g, '')}`)
+  writeFileSync(resolve(__dirname, './dist/index.mjs'), `${mjs.toString().replace(/\/src|,/g, '')}`)
+  writeFileSync(resolve(__dirname, './dist/index.d.ts'), `${dts.toString().replace(/\/src|,/g, '')}`)
 
-  removeSync(resolve(__dirnameNew, './dist/utils.d.ts'))
+  removeSync(resolve(__dirname, './dist/utils.d.ts'))
 
   console.log(kleur.bold().green(`\n ${name} ${format} 格式 ${version} 版本打包成功 🎉🎉🎉\n`))
 }
