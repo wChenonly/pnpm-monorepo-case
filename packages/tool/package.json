@@ -28,21 +28,20 @@
   "scripts": {
     "clean": "rimraf dist && rimraf .vitepress/dist",
     "docs:dev": "vitepress dev --host",
-    "docs:build": "rimraf .vitepress/dist && vitepress build --host --base=/share/",
+    "docs:build": "rimraf .vitepress/dist && vitepress build --host --base=/share/ && basePath=/share/ esno ./modifyHtml.ts",
     "docs:serve": "pnpm run docs:build && vitepress serve --host --base=/share/",
     "build:bundle": "tsc -p ./tsconfig.json --emitDeclarationOnly && esno ./esbuild.ts",
     "build": "pnpm clean && pnpm build:bundle && pnpm docs:build",
     "lint:fix": "eslint . --fix && pnpm format",
     "format": "prettier --write .",
     "test": "vitest",
-    "publish:oss": "esno ../../script/oss_deploy.ts",
-    "prepublishOnly": "pnpm run build && esno ../../script/prepublish.ts",
+    "publish:oss": "esno ../../script/ossDeploy.ts",
+    "prepublishOnly": "pnpm run build && esno ../../script/prePublish.ts",
     "release": "bumpp --no-tag --commit 'release: tool v' && RELEASE_MODE=true pnpm publish && pnpm publish:oss"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/fs-extra": "^11.0.1",
-    "axios": "^1.3.2",
+    "axios": "^1.3.4",
     "fs-extra": "^11.1.0"
   }
 }
